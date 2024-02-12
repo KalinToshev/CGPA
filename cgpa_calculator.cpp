@@ -8,5 +8,9 @@ int main()
 
     cout << "This is new line of my C++ program!" << endl;
 
+    int num;
+
+    cin >> num;
+
     return 0;
 }

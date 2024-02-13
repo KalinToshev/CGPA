@@ -12,7 +12,7 @@ bool isValidGrade(char grade)
 {
     //Convert grade to uppercase
     grade = toupper(grade);
-    
+
     return (grade >= 'A' && grade <= 'F');
 }
 
@@ -74,6 +74,7 @@ int main()
             cin >> grade;
         }
 
+        //Ask user to enter credit hours for each course, with error handling
         do
         {
             cout << "Enter credit hours for " << course << ": ";
@@ -85,11 +86,15 @@ int main()
                 //Clear input buffer
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
+            else if (creditHour <= 0)
+            {
+                cout << "Invalid input! Credit hours must be greater than zero." << endl;
+            }
             else
             {
                 isValidInput = true;
             }
-        } while (!isValidInput || creditHour <= 0);
+        } while (!isValidInput);
         
 
         //Store grade and credit hour

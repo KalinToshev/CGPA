@@ -7,6 +7,9 @@
 
 using namespace std;
 
+//Set a maximum value for credit hours
+const int MAX_CREDIT_HOURS = 1000;
+
 //Function to check if a character is a valid letter grade (A, B, C, etc.)
 bool isValidGrade(char grade) 
 {
@@ -89,6 +92,10 @@ int main()
             else if (creditHour <= 0)
             {
                 cout << "Invalid input! Credit hours must be greater than zero." << endl;
+            }
+            else if (creditHour > MAX_CREDIT_HOURS)
+            {
+                cout << "Invalid input! Credit hours cannot exceed " << MAX_CREDIT_HOURS << "." << endl;
             }
             else
             {

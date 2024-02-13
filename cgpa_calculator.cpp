@@ -47,19 +47,31 @@ int main()
     char continueAdding;
 
     //Ask user to enter course names
-    do
+    do 
     {
         string courseName;
         cout << "Enter course name: ";
+
         getline(cin, courseName);
         courseNames.push_back(courseName);
 
-        cout << "Do you want to add another course? (y/n): ";
-        cin >> continueAdding;
+        //Ask user if they want to continue adding courses
+        do 
+        {
+            cout << "Do you want to add another course? (y/n): ";
+            cin >> continueAdding;
+
+            if (tolower(continueAdding) != 'y' && tolower(continueAdding) != 'n') 
+            {
+                cout << "Invalid input! Please enter 'y' for yes or 'n' for no." << endl;
+            }
+        } 
+        while (tolower(continueAdding) != 'y' && tolower(continueAdding) != 'n');
 
         //Ignore newline character from previous input
-        cin.ignore();
-    } while (tolower(continueAdding) == 'y');
+        cin.ignore(); 
+    } 
+    while (tolower(continueAdding) == 'y');
     
     //Ask user to enter grades and credit hours for each course
     for (const auto& course : courseNames)

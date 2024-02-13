@@ -102,9 +102,17 @@ int main()
         creditHours.push_back(creditHour);
     }
 
+    //Check if there are no courses entered
+    if (courseNames.empty()) 
+    {
+        cout << "No courses entered. CGPA calculation cannot proceed." << endl;
+    } 
+    else 
+    {
     //Calculate and display CGPA
     double cgpa = calculateCGPA(grades, creditHours);
     cout << "Your CGPA is: " << fixed << setprecision(2) << cgpa << endl;
+    }
 
     return 0;
 }

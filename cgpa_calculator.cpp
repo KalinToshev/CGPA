@@ -4,6 +4,12 @@
 
 using namespace std;
 
+//Function to check if a character is a valid letter grade (A, B, C, etc.)
+bool isValidGrade(char grade)
+{
+    return (grade >= 'A' && grade <= 'F') || (grade >= 'a' && grade <= 'f');
+}
+
 int main()
 {
     vector<string> courseNames;
@@ -26,6 +32,28 @@ int main()
         cin.ignore();
     } while (tolower(continueAdding) == 'y');
     
+    //Ask user to enter grades and credit hours for each course
+    for (const auto& course : courseNames)
+    {
+        char grade; 
+        int creditHour;
 
+        cout << "Enter grade for " << course << ": ";
+        cin >> grade;
+
+        while (!isValidGrade(grade))
+        {
+            cout << "Invalid grade! Please enter a valid letter grade (A, B, C, etc.): ";
+            cin >> grade;
+        }
+
+        cout << "Enter credit hours for " << course << ": ";
+        cin >> creditHour;
+
+        //Store grade and credit hour
+        grades.push_back(grade);
+        creditHours.push_back(creditHour);
+    }
+    
     return 0;
 }

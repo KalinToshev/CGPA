@@ -8,10 +8,14 @@
 using namespace std;
 
 //Function to check if a character is a valid letter grade (A, B, C, etc.)
-bool isValidGrade(char grade)
+bool isValidGrade(char grade) 
 {
-    return (grade >= 'A' && grade <= 'F') || (grade >= 'a' && grade <= 'f');
+    //Convert grade to uppercase
+    grade = toupper(grade);
+    
+    return (grade >= 'A' && grade <= 'F');
 }
+
 
 //Function to calculate the CGPA
 double calculateCGPA(const vector<char>& grades, const vector<int>& creditHours)

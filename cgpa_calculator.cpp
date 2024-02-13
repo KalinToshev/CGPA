@@ -3,9 +3,18 @@
 #include <string>
 #include <iomanip>
 #include <limits>
-#include <ios>
 
 using namespace std;
+
+//Constants for messages
+const string ENTER_COURSE_NAME_MESSAGE = "Enter course name: ";
+const string CONTINUE_ADDING_COURSE_MESSAGE = "Do you want to add another course? (y/n): ";
+const string INVALID_YES_NO_INPUT_MESSAGE = "Invalid input! Please enter 'y' for yes or 'n' for no.";
+const string ENTER_GRADE_MESSAGE = "Enter grade for ";
+const string INVALID_GRADE_INPUT_MESSAGE = "Invalid grade! Please enter a valid letter grade (A, B, C, etc.): ";
+const string ENTER_CREDIT_HOURS_MESSAGE = "Enter credit hours for ";
+const string INVALID_CREDIT_HOURS_INPUT_MESSAGE = "Invalid input! Credit hours must be greater than zero and less than or equal to 1000.";
+const string NO_COURSES_ENTERED = "No courses entered. CGPA calculation cannot proceed.";
 
 //Set a maximum value for credit hours
 const int MAX_CREDIT_HOURS = 1000;
@@ -44,7 +53,7 @@ int main()
     //Check if there are no courses entered
     if (courseNames.empty()) 
     {
-        cout << "No courses entered. CGPA calculation cannot proceed." << endl;
+        cout << NO_COURSES_ENTERED << endl;
     } 
     else 
     {
@@ -77,17 +86,17 @@ vector<string> inputCourseNames()
     do 
     {
         string courseName;
-        cout << "Enter course name: ";
+        cout << ENTER_COURSE_NAME_MESSAGE;
         getline(cin, courseName);
         courseNames.push_back(courseName);
 
         do 
         {
-            cout << "Do you want to add another course? (y/n): ";
+            cout << CONTINUE_ADDING_COURSE_MESSAGE;
             cin >> continueAdding;
 
             if (tolower(continueAdding) != 'y' && tolower(continueAdding) != 'n') 
-                cout << "Invalid input! Please enter 'y' for yes or 'n' for no." << endl;
+                cout << INVALID_YES_NO_INPUT_MESSAGE << endl;
 
         } 
         while (tolower(continueAdding) != 'y' && tolower(continueAdding) != 'n');
@@ -105,22 +114,22 @@ pair<char, int> inputGradeAndCreditHours(const string& courseName)
     char grade;
     int creditHours;
 
-    cout << "Enter grade for " << courseName << ": ";
+    cout << ENTER_GRADE_MESSAGE << courseName << ": ";
     cin >> grade;
 
     while (!isValidGrade(grade)) 
     {
-        cout << "Invalid grade! Please enter a valid letter grade (A, B, C, etc.): ";
+        cout << INVALID_GRADE_INPUT_MESSAGE;
         cin >> grade;
     }
 
     do 
     {
-        cout << "Enter credit hours for " << courseName << ": ";
+        cout << ENTER_CREDIT_HOURS_MESSAGE << courseName << ": ";
         cin >> creditHours;
 
         if (!isValidCreditHours(creditHours)) 
-            cout << "Invalid input! Credit hours must be greater than zero and less than or equal to " << MAX_CREDIT_HOURS << "." << endl;
+            cout << INVALID_CREDIT_HOURS_INPUT_MESSAGE << endl;
 
     } 
     while (!isValidCreditHours(creditHours));

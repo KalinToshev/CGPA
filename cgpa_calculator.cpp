@@ -10,6 +10,25 @@ bool isValidGrade(char grade)
     return (grade >= 'A' && grade <= 'F') || (grade >= 'a' && grade <= 'f');
 }
 
+//Function to calculate the CGPA
+double calculateCGPA(const vector<char>& grades, const vector<int>& creditHours)
+{
+    double totalGradePoints = 0;
+    int totalCreditHours = 0;
+
+    //Calculate total grade points and total credit hours
+    for (size_t i = 0; i < grades.size(); i++)
+    {
+        //Convert letter grade to grade points (assuming 4-points scale)
+        double gradePoints = 4.0 - (toupper(grades[i]) - 'A');
+        totalGradePoints += gradePoints * creditHours[i];
+        totalCreditHours += creditHours[i];
+    }
+
+    //Calculate CGPA
+    return totalGradePoints / totalCreditHours;
+}
+
 int main()
 {
     vector<string> courseNames;
@@ -54,6 +73,10 @@ int main()
         grades.push_back(grade);
         creditHours.push_back(creditHour);
     }
-    
+
+    //Calculate and display CGPA
+    double cgpa = calculateCGPA(grades, creditHours);
+    cout << "Your CGPA is: " << cgpa << endl;
+
     return 0;
 }

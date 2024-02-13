@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 #include <iomanip>
+#include <limits>
+#include <ios>
 
 using namespace std;
 
@@ -57,6 +59,7 @@ int main()
     {
         char grade; 
         int creditHour;
+        bool isValidInput = false;
 
         cout << "Enter grade for " << course << ": ";
         cin >> grade;
@@ -67,8 +70,23 @@ int main()
             cin >> grade;
         }
 
-        cout << "Enter credit hours for " << course << ": ";
-        cin >> creditHour;
+        do
+        {
+            cout << "Enter credit hours for " << course << ": ";
+            if (!(cin >> creditHour))
+            {
+                cout << "Invalid input! Please enter a valid numeric value for credit hours." << endl;
+                cin.clear();
+
+                //Clear input buffer
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            else
+            {
+                isValidInput = true;
+            }
+        } while (!isValidInput || creditHour <= 0);
+        
 
         //Store grade and credit hour
         grades.push_back(grade);

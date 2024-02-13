@@ -27,7 +27,7 @@ The CGPA Calculator is a C++ program designed to calculate the Cumulative Grade 
 Here's an example of how to use the CGPA Calculator:
 
 ```
-Enter the number of courses: 4
+Enter the names of courses first (Course 1, Course2, etc.)
 
 Enter grade for Course 1: A
 Enter credit hours for Course 1: 3
@@ -41,7 +41,7 @@ Enter credit hours for Course 3: 3
 Enter grade for Course 4: A
 Enter credit hours for Course 4: 2
 
-CGPA: 3.22
+CGPA: 3.17
 ```
 
 ## Contributing

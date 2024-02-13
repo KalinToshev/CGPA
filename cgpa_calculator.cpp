@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -76,7 +77,7 @@ int main()
 
     //Calculate and display CGPA
     double cgpa = calculateCGPA(grades, creditHours);
-    cout << "Your CGPA is: " << cgpa << endl;
+    cout << "Your CGPA is: " << fixed << setprecision(2) << cgpa << endl;
 
     return 0;
 }
